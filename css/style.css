@@ -1,0 +1,301 @@
+/* Genel reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #1f2937, #020617);
+  color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Toast alanı (üst sağ) */
+.toast-wrapper {
+  top: 1rem;
+  right: 1rem;
+  z-index: 1080;
+}
+
+.toast {
+  background: #111827;
+  color: #e5e7eb;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+#toastSuccess .toast-body {
+  border-left: 4px solid #22c55e;
+}
+
+#toastError .toast-body {
+  border-left: 4px solid #ef4444;
+}
+
+/* Uygulama iskeleti */
+.todo-app {
+  width: 100%;
+  max-width: 900px;
+  padding: 2.5rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Üst kısım */
+.todo-header {
+  padding: 1.75rem 2rem;
+  border-radius: 1.5rem;
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Marka alanı */
+.todo-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo-dot {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: conic-gradient(
+    from 180deg,
+    #38bdf8,
+    #22c55e,
+    #facc15,
+    #fb7185,
+    #8b5cf6,
+    #38bdf8
+  );
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.5);
+}
+
+.brand-text h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.brand-text p {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* Input alanı */
+.todo-input-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.todo-input {
+  flex: 1;
+  min-width: 0;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.todo-input::placeholder {
+  color: #6b7280;
+}
+
+.todo-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+  background: #020617;
+}
+
+.btn-add {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: #f9fafb;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.6);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+}
+
+.btn-add:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.8);
+}
+
+.btn-add:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.6);
+}
+
+/* İçerik / liste alanı */
+.todo-content {
+  margin-top: 1.75rem;
+  padding: 1.5rem 0.25rem 0;
+  flex: 1;
+}
+
+/* Liste */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Tek görev kartı */
+.todo-item {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s ease, box-shadow 0.1s ease,
+    background 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.todo-item:hover {
+  transform: translateY(-1px);
+  border-color: #1d4ed8;
+}
+
+.todo-item.completed {
+  opacity: 0.75;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* Tam sayfa hissi için alt boşluk */
+.todo-app {
+  padding-bottom: 3rem;
+}
+
+/* Check butonu */
+.check-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 2px solid #4b5563;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.check-icon {
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: rotate(45deg);
+}
+
+.todo-item.completed .check-btn {
+  background: radial-gradient(circle at 30% 0, #a855f7, #22c55e);
+  border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3);
+}
+
+.todo-item.completed .check-icon {
+  border-right-color: #ecfdf5;
+  border-bottom-color: #ecfdf5;
+}
+
+.check-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Metin */
+.todo-text {
+  flex: 1;
+  font-size: 0.98rem;
+  color: #f9fafb;
+  cursor: pointer;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* Silme butonu */
+.delete-btn {
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.1rem 0.25rem;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.1s ease, color 0.1s ease, transform 0.1s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(248, 113, 113, 0.15);
+  color: #fecaca;
+  transform: translateY(-1px);
+}
+
+/* Boş liste state */
+.todo-empty-state {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+/* Küçük ekranlar */
+@media (max-width: 576px) {
+  .todo-header {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .brand-text h1 {
+    font-size: 1.3rem;
+  }
+
+  .btn-add {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .todo-input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

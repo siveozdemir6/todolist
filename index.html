@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Şive's To Do List</title>
+  </head>
+  <body>
+    <!-- Bootstrap Toasts (üst sağ bildirim alanı) -->
+    <div class="toast-wrapper position-fixed p-3">
+      <!-- Başarılı ekleme -->
+      <div
+        id="toastSuccess"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-delay="2500"
+      >
+        <div class="toast-body">
+          Görev listeye eklendi. ✨
+          <button
+            type="button"
+            class="ml-2 mb-1 close"
+            data-dismiss="toast"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hata: boş ekleme -->
+      <div
+        id="toastError"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-delay="2500"
+      >
+        <div class="toast-body">
+          Boş görev ekleyemezsin. 🙅‍♀️
+          <button
+            type="button"
+            class="ml-2 mb-1 close"
+            data-dismiss="toast"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Uygulama -->
+    <main class="todo-app">
+      <header class="todo-header">
+        <div class="todo-brand">
+          <div class="brand-logo-dot"></div>
+          <div class="brand-text">
+            <h1>Şive's To Do List</h1>
+            <p>Günün görevlerini planla, gerisini bana bırak.</p>
+          </div>
+        </div>
+
+        <div class="todo-input-group">
+          <input
+            type="text"
+            id="taskInput"
+            class="todo-input"
+            placeholder="Bugün ne yapacaksın?"
+          />
+          <button id="addButton" class="btn-add">Ekle</button>
+        </div>
+      </header>
+
+      <section class="todo-content">
+        <ul id="todoList" class="todo-list"></ul>
+
+        <div id="emptyState" class="todo-empty-state">
+          Henüz hiç görev yok. Hadi bir tane ekleyelim ✨
+        </div>
+      </section>
+    </main>
+
+    <!-- Bootstrap JS + jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Uygulama JS -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
